@@ -1,0 +1,39 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="PUSH_FORWARD"
+config/features=PackedStringArray("4.4", "Mobile")
+config/icon="res://icon.svg"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
+[file_customization]
+
+folder_colors={
+"res://assets/enemies/": "red",
+"res://assets/player/": "blue",
+"res://scenes/enemies/": "red",
+"res://scenes/player/": "blue",
+"res://scenes/props/": "purple",
+"res://scenes/world/": "teal",
+"res://scripts/enemies/": "red",
+"res://scripts/player/": "blue",
+"res://scripts/props/": "purple",
+"res://scripts/world/": "teal"
+}
+
+[rendering]
+
+renderer/rendering_method="mobile"
