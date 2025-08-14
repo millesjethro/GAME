@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bcx7kbk71lcys"]
+[gd_scene load_steps=59 format=3 uid="uid://bcx7kbk71lcys"]
 
 [ext_resource type="Texture2D" uid="uid://67ivkxxpsext" path="res://assets/player/Lancer/Lancer with shadows/Lancer.png" id="1_mr4qx"]
 
@@ -416,11 +416,34 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mr4qx"]
+radius = 4.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vltva"]
+b = Vector2(88, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_jqc4g"]
+b = Vector2(31, 0)
+
+[node name="player_body" type="CharacterBody2D"]
+
+[node name="player_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pfps")
-animation = &"fire_attack"
+animation = &"attack"
 autoplay = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="player_ground_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("CapsuleShape2D_mr4qx")
+
+[node name="engage_battle" type="Area2D" parent="."]
+
+[node name="engage_area" type="CollisionShape2D" parent="engage_battle"]
+shape = SubResource("SegmentShape2D_vltva")
+
+[node name="damage_enemy" type="Area2D" parent="."]
+
+[node name="damage _area" type="CollisionShape2D" parent="damage_enemy"]
+position = Vector2(1, -6)
+shape = SubResource("SegmentShape2D_jqc4g")
+debug_color = Color(0.807987, 0, 0.0191098, 0.42)
