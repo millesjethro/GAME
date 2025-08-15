@@ -418,7 +418,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mr4qx"]
-radius = 4.0
+radius = 5.0
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_vltva"]
 b = Vector2(88, 0)
@@ -426,28 +426,28 @@ b = Vector2(88, 0)
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_jqc4g"]
 b = Vector2(31, 0)
 
-[node name="player_body" type="CharacterBody2D"]
+[node name="Lancer" type="CharacterBody2D"]
 script = ExtResource("1_vltva")
 
-[node name="player_sprite" type="AnimatedSprite2D" parent="."]
+[node name="Lancer_AnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pfps")
 animation = &"walking"
 autoplay = "idle"
 frame_progress = 0.281061
 speed_scale = 3.0
 
-[node name="player_ground_collision" type="CollisionShape2D" parent="."]
+[node name="Lancer_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_mr4qx")
 
-[node name="engage_battle" type="Area2D" parent="."]
+[node name="Lancer_TakePosition" type="Area2D" parent="."]
 
-[node name="engage_area" type="CollisionShape2D" parent="engage_battle"]
+[node name="TakePosition_Area" type="CollisionShape2D" parent="Lancer_TakePosition"]
 shape = SubResource("SegmentShape2D_vltva")
 
-[node name="damage_enemy" type="Area2D" parent="."]
+[node name="Lancer_DamgeEnemy" type="Area2D" parent="."]
 
-[node name="damage _area" type="CollisionShape2D" parent="damage_enemy"]
+[node name="DamageEnemy_Area" type="CollisionShape2D" parent="Lancer_DamgeEnemy"]
 position = Vector2(1, -6)
 shape = SubResource("SegmentShape2D_jqc4g")
 debug_color = Color(0.807987, 0, 0.0191098, 0.42)
