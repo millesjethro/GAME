@@ -1,0 +1,169 @@
+[gd_scene load_steps=24 format=3 uid="uid://iyi18i7ofcq8"]
+
+[ext_resource type="Texture2D" uid="uid://bixvyighyj0qr" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Hurt.png" id="1_akrga"]
+[ext_resource type="Texture2D" uid="uid://dpd8u1cwvq7wp" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Attack01.png" id="1_oghyc"]
+[ext_resource type="Texture2D" uid="uid://oh35eegur6s1" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Idle.png" id="2_oghyc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkxvl"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfhar"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwb0s"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdmk8"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_702rg"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sc2xc"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5f38"]
+atlas = ExtResource("1_oghyc")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjw7a"]
+atlas = ExtResource("1_akrga")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3seto"]
+atlas = ExtResource("1_akrga")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_71lxr"]
+atlas = ExtResource("1_akrga")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4d0a"]
+atlas = ExtResource("1_akrga")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68s6u"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sutp"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqqeg"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uiy30"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0kxu"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ri8wv"]
+atlas = ExtResource("2_oghyc")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jkxvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkxvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfhar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwb0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdmk8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_702rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sc2xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5f38")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjw7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3seto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_71lxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4d0a")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68s6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sutp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqqeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uiy30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u0kxu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ri8wv")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rfhar"]
+radius = 5.0
+height = 18.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ckyre"]
+radius = 6.0
+height = 18.0
+
+[node name="orc_warrior" type="StaticBody2D"]
+
+[node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jkxvl")
+animation = &"idle"
+autoplay = "idle"
+speed_scale = 3.0
+
+[node name="Orc_Collision" type="CollisionShape2D" parent="."]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_rfhar")
+
+[node name="Orc_TakeDamage" type="Area2D" parent="."]
+
+[node name="take_damage_collision" type="CollisionShape2D" parent="Orc_TakeDamage"]
+position = Vector2(1, -2)
+shape = SubResource("CapsuleShape2D_ckyre")
+debug_color = Color(0.995776, 0, 0.199186, 0.42)
