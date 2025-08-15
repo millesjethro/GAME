@@ -1,6 +1,7 @@
-[gd_scene load_steps=59 format=3 uid="uid://bcx7kbk71lcys"]
+[gd_scene load_steps=60 format=3 uid="uid://bcx7kbk71lcys"]
 
 [ext_resource type="Texture2D" uid="uid://67ivkxxpsext" path="res://assets/player/Lancer/Lancer with shadows/Lancer.png" id="1_mr4qx"]
+[ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/player_scene.gd" id="1_vltva"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vltva"]
 atlas = ExtResource("1_mr4qx")
@@ -426,11 +427,14 @@ b = Vector2(88, 0)
 b = Vector2(31, 0)
 
 [node name="player_body" type="CharacterBody2D"]
+script = ExtResource("1_vltva")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pfps")
-animation = &"attack"
+animation = &"walking"
 autoplay = "idle"
+frame_progress = 0.281061
+speed_scale = 3.0
 
 [node name="player_ground_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
