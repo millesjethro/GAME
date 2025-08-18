@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://iyi18i7ofcq8"]
+[gd_scene load_steps=25 format=3 uid="uid://iyi18i7ofcq8"]
 
 [ext_resource type="Texture2D" uid="uid://bixvyighyj0qr" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Hurt.png" id="1_akrga"]
 [ext_resource type="Texture2D" uid="uid://dpd8u1cwvq7wp" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Attack01.png" id="1_oghyc"]
@@ -149,21 +149,33 @@ height = 18.0
 radius = 6.0
 height = 18.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crrnf"]
+size = Vector2(32, 19)
+
 [node name="orc_warrior" type="StaticBody2D"]
 
 [node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_jkxvl")
 animation = &"idle"
 autoplay = "idle"
 speed_scale = 3.0
+flip_h = true
 
 [node name="Orc_Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_rfhar")
 
-[node name="Orc_TakeDamage" type="Area2D" parent="."]
+[node name="Orc_TakeDamage" type="Area2D" parent="." groups=["TakeDamage"]]
 
 [node name="take_damage_collision" type="CollisionShape2D" parent="Orc_TakeDamage"]
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_ckyre")
 debug_color = Color(0.995776, 0, 0.199186, 0.42)
+
+[node name="Enemy_BattleArea" type="Area2D" parent="." groups=["BattleArea"]]
+
+[node name="Enemy_BattleArea_Collision" type="CollisionShape2D" parent="Enemy_BattleArea"]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_crrnf")
+debug_color = Color(3.27289e-06, 0.643765, 0.293921, 0.42)

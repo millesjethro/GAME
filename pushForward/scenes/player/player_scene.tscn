@@ -1,7 +1,9 @@
-[gd_scene load_steps=60 format=3 uid="uid://bcx7kbk71lcys"]
+[gd_scene load_steps=62 format=3 uid="uid://bcx7kbk71lcys"]
 
 [ext_resource type="Texture2D" uid="uid://67ivkxxpsext" path="res://assets/player/Lancer/Lancer with shadows/Lancer.png" id="1_mr4qx"]
 [ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/player_scene.gd" id="1_vltva"]
+[ext_resource type="Script" uid="uid://baxcuvv8h10tw" path="res://scripts/player/stats.gd" id="3_5aw2d"]
+[ext_resource type="Resource" uid="uid://cemnfeaoit0dh" path="res://scripts/stat_script/PlayerStats.tres" id="4_07xs6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vltva"]
 atlas = ExtResource("1_mr4qx")
@@ -431,9 +433,8 @@ script = ExtResource("1_vltva")
 
 [node name="Lancer_AnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pfps")
-animation = &"walking"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.281061
 speed_scale = 3.0
 
 [node name="Lancer_Collision" type="CollisionShape2D" parent="."]
@@ -451,3 +452,11 @@ shape = SubResource("SegmentShape2D_vltva")
 position = Vector2(1, -6)
 shape = SubResource("SegmentShape2D_jqc4g")
 debug_color = Color(0.807987, 0, 0.0191098, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("3_5aw2d")
+data = ExtResource("4_07xs6")
+
+[connection signal="area_entered" from="Lancer_TakePosition" to="." method="_on_engage_in_battle"]
+[connection signal="area_exited" from="Lancer_TakePosition" to="." method="_on_out_of_battle"]
+[connection signal="area_entered" from="Lancer_DamgeEnemy" to="." method="_on_attack_entered"]

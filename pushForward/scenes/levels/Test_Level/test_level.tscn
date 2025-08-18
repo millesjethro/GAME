@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cbo4lef8bfktr"]
+[gd_scene load_steps=5 format=3 uid="uid://cbo4lef8bfktr"]
 
 [ext_resource type="Texture2D" uid="uid://cnnx5ehii3rd0" path="res://icon.svg" id="1_so4yt"]
 [ext_resource type="PackedScene" uid="uid://bcx7kbk71lcys" path="res://scenes/player/player_scene.tscn" id="2_e60ur"]
+[ext_resource type="PackedScene" uid="uid://iyi18i7ofcq8" path="res://scenes/enemies/orc/orc_warrior.tscn" id="3_kgfcq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e60ur"]
 size = Vector2(166, 20)
@@ -9,7 +10,8 @@ size = Vector2(166, 20)
 [node name="Test_Level" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(89, 132)
+position = Vector2(192, 132)
+scale = Vector2(2.37943, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(0, 0.25)
@@ -20,9 +22,12 @@ texture = ExtResource("1_so4yt")
 shape = SubResource("RectangleShape2D_e60ur")
 
 [node name="player_body" parent="." instance=ExtResource("2_e60ur")]
-position = Vector2(43, 115)
+position = Vector2(45, 81)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(193, 105)
 scale = Vector2(0.508338, 1.0397)
 zoom = Vector2(3, 3)
+
+[node name="orc_warrior" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(365, 115)
