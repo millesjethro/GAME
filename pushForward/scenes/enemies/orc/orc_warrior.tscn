@@ -1,8 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://iyi18i7ofcq8"]
+[gd_scene load_steps=27 format=3 uid="uid://iyi18i7ofcq8"]
 
 [ext_resource type="Texture2D" uid="uid://bixvyighyj0qr" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Hurt.png" id="1_akrga"]
 [ext_resource type="Texture2D" uid="uid://dpd8u1cwvq7wp" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Attack01.png" id="1_oghyc"]
+[ext_resource type="Script" uid="uid://yue44hn5gosm" path="res://scripts/enemies/Orcs/orc_warrior.gd" id="1_sv116"]
 [ext_resource type="Texture2D" uid="uid://oh35eegur6s1" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Idle.png" id="2_oghyc"]
+[ext_resource type="Script" uid="uid://dumcgndpgcfo1" path="res://scripts/enemies/Orcs/OrcWarriorStats.gd" id="4_w3uh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jkxvl"]
 atlas = ExtResource("1_oghyc")
@@ -153,6 +155,7 @@ height = 18.0
 size = Vector2(32, 19)
 
 [node name="orc_warrior" type="StaticBody2D"]
+script = ExtResource("1_sv116")
 
 [node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
@@ -179,3 +182,7 @@ debug_color = Color(0.995776, 0, 0.199186, 0.42)
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_crrnf")
 debug_color = Color(3.27289e-06, 0.643765, 0.293921, 0.42)
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_w3uh7")
+level = 4
