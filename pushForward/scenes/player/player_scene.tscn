@@ -1,8 +1,8 @@
 [gd_scene load_steps=61 format=3 uid="uid://bcx7kbk71lcys"]
 
 [ext_resource type="Texture2D" uid="uid://67ivkxxpsext" path="res://assets/player/Lancer/Lancer with shadows/Lancer.png" id="1_mr4qx"]
-[ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/player_scene.gd" id="1_vltva"]
-[ext_resource type="Script" uid="uid://ccvuidrxttka6" path="res://scripts/stat_script/Player/PlayerStatsResource.gd" id="3_jqc4g"]
+[ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/PlayerControl.gd" id="1_vltva"]
+[ext_resource type="Script" uid="uid://baxcuvv8h10tw" path="res://scripts/player/PlayerStats.gd" id="3_jqc4g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vltva"]
 atlas = ExtResource("1_mr4qx")
@@ -452,7 +452,7 @@ position = Vector2(1, -6)
 shape = SubResource("SegmentShape2D_jqc4g")
 debug_color = Color(0.807987, 0, 0.0191098, 0.42)
 
-[node name="Stats" type="Node" parent="."]
+[node name="PlayerStatus" type="Node" parent="."]
 script = ExtResource("3_jqc4g")
 
 [connection signal="area_entered" from="Lancer_TakePosition" to="." method="_on_engage_in_battle"]

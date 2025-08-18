@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 @onready var anim_sprite = $Lancer_AnimSprite
-@onready var stats = $Stats
-@export var gravity: float = 600.0
+@onready var stats: PlayerStats = $PlayerStatus
 
+@export var gravity: float = 600.0
+var has_dealt_damage: bool = false
 var IsBattleArea = false
 var speed: float
 
@@ -17,7 +18,7 @@ var player_knockback_strength: float = 20.0
 var player_hop_strength: float = -150.0   # upward jump
 
 func _ready():
-	speed = stats.data.speed
+	speed = 200
 
 func _physics_process(delta):
 	var input_direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
@@ -55,17 +56,15 @@ func movement_sprite(input_direction):
 	else:
 		anim_sprite.play("idle")
 
+
 func attack_sprite():
 	if not is_attacking:
 		is_attacking = true
 		attack_timer = attack_duration
+		has_dealt_damage = false   # reset damage flag at start of attack
 
-		# Determine facing direction (flip_h = true means facing left)
 		var facing = -1 if anim_sprite.flip_h else 1
-
-		# Apply knockback to PLAYER (push backward)
 		velocity.x = -facing * player_knockback_strength
-		# Apply hop
 		velocity.y = player_hop_strength
 
 func engage_battle(input_direction):
@@ -76,12 +75,12 @@ func engage_battle(input_direction):
 		anim_sprite.play("idle")
 
 func _on_engage_in_battle(area: Area2D) -> void:
-	if area.is_in_group("BattleArea"):
+	if area.is_in_group("BattleArea") and not IsBattleArea:
 		print("Entered battle area:", area.name)
 		IsBattleArea = true
 
 func _on_out_of_battle(area: Area2D) -> void:
-	if area.is_in_group("BattleArea"):
+	if area.is_in_group("BattleArea") and IsBattleArea:
 		print("Exited battle area:", area.name)
 		IsBattleArea = false
 
@@ -89,13 +88,21 @@ func _on_attack_entered(area: Area2D) -> void:
 	if area.is_in_group("TakeDamage"):
 		attack_sprite()
 
-		var enemy = area.get_parent()  # The enemy is on the StaticBody2D
-		if enemy.has_method("take_damage"):
-			enemy.take_damage(stats.data.attack)
+		# Get the enemy node (usually the parent of the hitbox)
+		var enemy = area.get_parent()
 
-			# Connect only once per enemy
-			if not enemy.died.is_connected(_on_enemy_died):
-				enemy.died.connect(_on_enemy_died)
+		# Make sure enemy has stats & methods
+		if enemy.has_method("take_damage") and stats != null:
+			# Enemy takes damage equal to player attack
+			enemy.take_damage(stats.attack)
+
+			# Player ALSO takes damage equal to enemy attack
+			if enemy.has_variable("attack"):
+				stats.take_damage(enemy.attack)
+
+			# Connect enemy death event for EXP
+			if enemy.has_signal("died") and not enemy.is_connected("died", Callable(self, "_on_enemy_died")):
+				enemy.connect("died", Callable(self, "_on_enemy_died"))
 
 func _on_enemy_died(xp_reward: int) -> void:
 	stats.gain_exp(xp_reward)
