@@ -14,6 +14,7 @@ var health: int
 signal health_changed(new_health: int)
 signal leveled_up(new_level: int)
 signal exp_changed(experience: int, exp_to_next: int)
+signal died  # <- NEW
 
 func _ready():
 	health = max_health
@@ -24,7 +25,7 @@ func take_damage(amount: int) -> void:
 	emit_signal("health_changed", health)
 
 	if health <= 0:
-		print("Player died!")
+		emit_signal("died")  # Notify the Player node
 
 func gain_exp(amount: int):
 	emit_signal("exp_changed", experience, exp_to_next)
