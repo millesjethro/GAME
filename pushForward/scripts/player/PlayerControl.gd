@@ -97,9 +97,12 @@ func _on_attack_entered(area: Area2D) -> void:
 			enemy.take_damage(stats.attack)
 
 			# Player ALSO takes damage equal to enemy attack
-			if enemy.has_variable("attack"):
-				stats.take_damage(enemy.attack)
-
+			if enemy.get("attack"): # you used this before, but better to use `get()`
+				var enemy_attack = enemy.get("attack")
+				print("Enemy Attack:", enemy_attack)
+				stats.take_damage(enemy_attack)
+				print("Player HP:", stats.health)
+				
 			# Connect enemy death event for EXP
 			if enemy.has_signal("died") and not enemy.is_connected("died", Callable(self, "_on_enemy_died")):
 				enemy.connect("died", Callable(self, "_on_enemy_died"))

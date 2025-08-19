@@ -15,7 +15,7 @@ func _ready():
 func take_damage(amount: int) -> void:
 	var damage = max(amount - defense, 1)
 	health = clamp(health - damage, 0, max_health)
-
+	print(name, " HP:", health)  # auto prints Player or Enemy HP
 	if health <= 0:
 		die()
 
