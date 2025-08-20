@@ -455,6 +455,11 @@ debug_color = Color(0.807987, 0, 0.0191098, 0.42)
 [node name="PlayerStatus" type="Node" parent="."]
 script = ExtResource("3_jqc4g")
 
+[node name="Player_pov" type="Camera2D" parent="."]
+offset = Vector2(0, -70)
+zoom = Vector2(3, 3)
+limit_left = 0
+
 [connection signal="area_entered" from="Lancer_TakePosition" to="." method="_on_engage_in_battle"]
 [connection signal="area_exited" from="Lancer_TakePosition" to="." method="_on_out_of_battle"]
 [connection signal="area_entered" from="Lancer_DamgeEnemy" to="." method="_on_attack_entered"]

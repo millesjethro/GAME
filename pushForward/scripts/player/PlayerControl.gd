@@ -1,3 +1,10 @@
+# Player.gd
+# ------------------------------
+# Main Player controller script.
+# Handles movement, gravity, attacking, knockback, battle states,
+# and connects with PlayerStats for HP/EXP.
+# ------------------------------
+
 extends CharacterBody2D
 
 @onready var anim_sprite = $Lancer_AnimSprite
@@ -5,8 +12,8 @@ extends CharacterBody2D
 
 @export var gravity: float = 600.0
 var has_dealt_damage: bool = false
-var IsBattleArea = false
-var speed: float
+var is_in_battle: bool = false
+var speed: float = 200.0
 
 # Attack state
 var is_attacking: bool = false
@@ -14,23 +21,21 @@ var attack_duration: float = 0.25
 var attack_timer: float = 0.0
 
 # Knockback values
-var player_knockback_strength: float = 20.0
+var player_knockback_strength: float = 50.0
 var player_hop_strength: float = -150.0   # upward jump
 
-# NEW: player death state
+# Death state
 var is_dead: bool = false
 
 func _ready():
-	speed = 200
-	# Connect death signal
 	stats.connect("died", Callable(self, "_on_player_died"))
 
 func _physics_process(delta):
-	if is_dead:
-		return  # Stop all player control if dead
+	if is_dead: return
 
 	var input_direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 
+	# Handle attacking timer
 	if is_attacking:
 		attack_timer -= delta
 		if attack_timer <= 0 and is_on_floor():
@@ -38,6 +43,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = input_direction * speed
 
+	# Apply gravity
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -46,20 +52,25 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	# Animations depending on state
 	if not is_attacking:
-		if IsBattleArea == false:
-			movement_sprite(input_direction)
+		if not is_in_battle:
+			_movement_sprite(input_direction)
 		else:
-			engage_battle(input_direction)
+			_engage_battle(input_direction)
 
-func movement_sprite(input_direction):
+
+# ------------------------------
+# Sprite Animation helpers
+# ------------------------------
+func _movement_sprite(input_direction):
 	if input_direction != 0:
 		anim_sprite.play("walking")
 		anim_sprite.flip_h = input_direction < 0
 	else:
 		anim_sprite.play("idle")
 
-func attack_sprite():
+func _attack_sprite():
 	if not is_attacking:
 		is_attacking = true
 		attack_timer = attack_duration
@@ -69,49 +80,56 @@ func attack_sprite():
 		velocity.x = -facing * player_knockback_strength
 		velocity.y = player_hop_strength
 
-func engage_battle(input_direction):
+func _engage_battle(input_direction):
 	if input_direction != 0:
 		anim_sprite.play("engage")
 		anim_sprite.flip_h = input_direction < 0
 	else:
 		anim_sprite.play("idle")
 
+
+# ------------------------------
+# Battle Triggers
+# ------------------------------
 func _on_engage_in_battle(area: Area2D) -> void:
-	if area.is_in_group("BattleArea") and not IsBattleArea:
-		print("Entered battle area:", area.name)
-		IsBattleArea = true
+	if area.is_in_group("BattleArea") and not is_in_battle:
+		is_in_battle = true
 
 func _on_out_of_battle(area: Area2D) -> void:
-	if area.is_in_group("BattleArea") and IsBattleArea:
-		print("Exited battle area:", area.name)
-		IsBattleArea = false
+	if area.is_in_group("BattleArea") and is_in_battle:
+		is_in_battle = false
 
 func _on_attack_entered(area: Area2D) -> void:
-	if is_dead:
-		return  # Dead player can't attack
+	if is_dead: return
 
 	if area.is_in_group("TakeDamage"):
-		attack_sprite()
+		_attack_sprite()
 		var enemy = area.get_parent()
 
+		# Deal damage to enemy
 		if enemy.has_method("take_damage") and stats != null:
 			enemy.take_damage(stats.attack)
-
+			anim_sprite.play("hurt")
+			await anim_sprite.animation_finished
+			# Enemy counterattacks
 			if enemy.get("attack"):
 				var enemy_attack = enemy.get("attack")
-				print("Enemy Attack:", enemy_attack)
 				stats.take_damage(enemy_attack)
-				print("Player HP:", stats.health)
 
+			# Connect enemy death event
 			if enemy.has_signal("died") and not enemy.is_connected("died", Callable(self, "_on_enemy_died")):
 				enemy.connect("died", Callable(self, "_on_enemy_died"))
 
-func _on_enemy_died(xp_reward: int) -> void:
-	stats.gain_exp(xp_reward)
 
-# 🔹 NEW death handler
+# ------------------------------
+# Callbacks
+# ------------------------------
+func _on_enemy_died(xp_reward: int, gold_reward: int) -> void:
+	stats.gain_exp(xp_reward)
+	stats.gold_update(gold_reward)
+
 func _on_player_died() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
-	anim_sprite.play("death")  # You need a "death" animation in your AnimatedSprite2D
+	anim_sprite.play("death")  # Needs "death" animation
 	print("Player has died!")

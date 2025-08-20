@@ -10,7 +10,7 @@ size = Vector2(166, 20)
 [node name="Test_Level" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(192, 132)
+position = Vector2(198, -12)
 scale = Vector2(2.37943, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -22,12 +22,22 @@ texture = ExtResource("1_so4yt")
 shape = SubResource("RectangleShape2D_e60ur")
 
 [node name="player_body" parent="." instance=ExtResource("2_e60ur")]
-position = Vector2(45, 81)
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(193, 105)
-scale = Vector2(0.508338, 1.0397)
-zoom = Vector2(3, 3)
+position = Vector2(51, -63)
 
 [node name="orc_warrior" parent="." instance=ExtResource("3_kgfcq")]
-position = Vector2(365, 115)
+position = Vector2(371, -29)
+
+[node name="orc_warrior2" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(336, -29)
+
+[node name="orc_warrior3" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(299, -29)
+
+[node name="orc_warrior4" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(262, -29)
+
+[node name="orc_warrior5" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(226, -29)
+
+[node name="orc_warrior6" parent="." instance=ExtResource("3_kgfcq")]
+position = Vector2(189, -29)

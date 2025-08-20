@@ -97,7 +97,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b5f38")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -114,7 +114,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_q4d0a")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -159,7 +159,7 @@ script = ExtResource("1_w3uh7")
 [node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_jkxvl")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 speed_scale = 3.0
 flip_h = true
