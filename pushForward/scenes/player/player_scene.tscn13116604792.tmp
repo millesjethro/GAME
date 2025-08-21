@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://67ivkxxpsext" path="res://assets/player/Lancer/Lancer with shadows/Lancer.png" id="1_mr4qx"]
 [ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/PlayerControl.gd" id="1_vltva"]
 [ext_resource type="Script" uid="uid://baxcuvv8h10tw" path="res://scripts/player/PlayerStats.gd" id="3_jqc4g"]
-[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/healthbar.tscn" id="4_5aw2d"]
+[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/player/player_healthbar.tscn" id="4_5aw2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vltva"]
 atlas = ExtResource("1_mr4qx")
@@ -433,7 +433,7 @@ script = ExtResource("1_vltva")
 
 [node name="Lancer_AnimSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5pfps")
-animation = &"death"
+animation = &"attack"
 autoplay = "idle"
 speed_scale = 3.0
 
@@ -463,15 +463,14 @@ limit_left = 0
 
 [node name="HealthBar" parent="." instance=ExtResource("4_5aw2d")]
 custom_minimum_size = Vector2(50, 0)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.0
-offset_top = -42.0
-offset_right = 26.0
-offset_bottom = -36.0
+anchors_preset = 0
+anchor_right = 0.0
+offset_left = -25.0
+offset_top = -44.0
+offset_right = 25.0
+offset_bottom = -38.0
+grow_horizontal = 1
 grow_vertical = 1
-size_flags_horizontal = 4
 
 [connection signal="area_entered" from="Lancer_TakePosition" to="." method="_on_engage_in_battle"]
 [connection signal="area_exited" from="Lancer_TakePosition" to="." method="_on_out_of_battle"]

@@ -1,13 +1,13 @@
 extends StaticBody2D
 
-@onready var anim_sprite = $Orc_AnimSprite
+@onready var anim_sprite = $Elite_Orc_AnimSprite
 @onready var hp_bar = $HealthBar
-@export var level: int = randi_range(1, 3)  # Enemy level
-@export var base_health: int = 20
-@export var base_attack: int = 5
-@export var base_defense: int = 2
-@export var base_xp_reward: int = 15
-@export var base_gold_reward: int = 7
+@export var level: int = randi_range(3, 8)  # Enemy level
+@export var base_health: int = 30
+@export var base_attack: int = 7
+@export var base_defense: int = 3
+@export var base_xp_reward: int = 18
+@export var base_gold_reward: int = 10
 
 var max_health: int
 var attack: int

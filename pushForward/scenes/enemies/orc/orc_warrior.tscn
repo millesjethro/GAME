@@ -1,37 +1,26 @@
-[gd_scene load_steps=26 format=3 uid="uid://iyi18i7ofcq8"]
+[gd_scene load_steps=24 format=3 uid="uid://iyi18i7ofcq8"]
 
 [ext_resource type="Texture2D" uid="uid://bixvyighyj0qr" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Hurt.png" id="1_akrga"]
-[ext_resource type="Texture2D" uid="uid://dpd8u1cwvq7wp" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Attack01.png" id="1_oghyc"]
 [ext_resource type="Script" uid="uid://cg6h3hlc20rh7" path="res://scripts/enemies/Orcs/OrcWarrior.gd" id="1_w3uh7"]
 [ext_resource type="Texture2D" uid="uid://oh35eegur6s1" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Idle.png" id="2_oghyc"]
+[ext_resource type="Texture2D" uid="uid://biaeem4ndgywd" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Death.png" id="2_sv116"]
+[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/healthbar.tscn" id="5_sv116"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkxvl"]
-atlas = ExtResource("1_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs6sd"]
+atlas = ExtResource("2_sv116")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rfhar"]
-atlas = ExtResource("1_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw7fi"]
+atlas = ExtResource("2_sv116")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_cwb0s"]
-atlas = ExtResource("1_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_spe1t"]
+atlas = ExtResource("2_sv116")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mdmk8"]
-atlas = ExtResource("1_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr101"]
+atlas = ExtResource("2_sv116")
 region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_702rg"]
-atlas = ExtResource("1_oghyc")
-region = Rect2(400, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sc2xc"]
-atlas = ExtResource("1_oghyc")
-region = Rect2(500, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5f38"]
-atlas = ExtResource("1_oghyc")
-region = Rect2(600, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjw7a"]
 atlas = ExtResource("1_akrga")
@@ -77,28 +66,19 @@ region = Rect2(500, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jkxvl")
+"texture": SubResource("AtlasTexture_vs6sd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rfhar")
+"texture": SubResource("AtlasTexture_yw7fi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_cwb0s")
+"texture": SubResource("AtlasTexture_spe1t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mdmk8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_702rg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sc2xc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5f38")
+"texture": SubResource("AtlasTexture_lr101")
 }],
 "loop": false,
-"name": &"attack",
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -159,7 +139,7 @@ script = ExtResource("1_w3uh7")
 [node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_jkxvl")
-animation = &"hurt"
+animation = &"die"
 autoplay = "idle"
 speed_scale = 3.0
 flip_h = true
@@ -181,3 +161,10 @@ debug_color = Color(0.995776, 0, 0.199186, 0.42)
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_crrnf")
 debug_color = Color(3.27289e-06, 0.643765, 0.293921, 0.42)
+
+[node name="HealthBar" parent="." instance=ExtResource("5_sv116")]
+offset_left = -13.0
+offset_top = -18.0
+offset_right = 12.0
+offset_bottom = -14.0
+metadata/_edit_use_anchors_ = true

@@ -5,6 +5,7 @@ class_name PlayerStats
 # Handles player health, damage, experience, and level progression.
 # Emits signals for UI updates and interaction with the Player node.
 
+
 @export var level: int = 1
 @export var experience: int = 0
 @export var exp_to_next: int = 100
@@ -37,7 +38,7 @@ func take_damage(amount: int) -> void:
 	var damage = max(amount - defense, 1)
 	health = clamp(health - damage, 0, max_health)
 	emit_signal("health_changed", health)
-
+	
 	if health <= 0:
 		emit_signal("died")  # Notify Player node
 

@@ -9,12 +9,13 @@ extends CharacterBody2D
 
 @onready var anim_sprite = $Lancer_AnimSprite
 @onready var stats: PlayerStats = $PlayerStatus
-
+@onready var hp_bar = $HealthBar
 @export var gravity: float = 600.0
+
 var has_dealt_damage: bool = false
 var is_in_battle: bool = false
 var speed: float = 200.0
-
+var current_hp = 0
 # Attack state
 var is_attacking: bool = false
 var attack_duration: float = 0.25
@@ -29,9 +30,18 @@ var is_dead: bool = false
 
 func _ready():
 	stats.connect("died", Callable(self, "_on_player_died"))
+	stats.connect("health_changed", Callable(self, "_on_health_changed"))
+	hp_bar.init_health(stats.base_health)
+	
 
 func _physics_process(delta):
-	if is_dead: return
+	if is_dead:
+		if not is_on_floor():
+			velocity.y += gravity * delta
+			move_and_slide()
+			anim_sprite.play("death")
+			await anim_sprite.animation_finished
+		return
 
 	var input_direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
 
@@ -105,7 +115,7 @@ func _on_attack_entered(area: Area2D) -> void:
 	if area.is_in_group("TakeDamage"):
 		_attack_sprite()
 		var enemy = area.get_parent()
-
+		
 		# Deal damage to enemy
 		if enemy.has_method("take_damage") and stats != null:
 			enemy.take_damage(stats.attack)
@@ -115,21 +125,20 @@ func _on_attack_entered(area: Area2D) -> void:
 			if enemy.get("attack"):
 				var enemy_attack = enemy.get("attack")
 				stats.take_damage(enemy_attack)
-
+				
 			# Connect enemy death event
 			if enemy.has_signal("died") and not enemy.is_connected("died", Callable(self, "_on_enemy_died")):
 				enemy.connect("died", Callable(self, "_on_enemy_died"))
 
-
 # ------------------------------
 # Callbacks
 # ------------------------------
+func _on_health_changed(new_health: int) -> void:
+	hp_bar.set_health(new_health)
+	
 func _on_enemy_died(xp_reward: int, gold_reward: int) -> void:
 	stats.gain_exp(xp_reward)
 	stats.gold_update(gold_reward)
 
 func _on_player_died() -> void:
 	is_dead = true
-	velocity = Vector2.ZERO
-	anim_sprite.play("death")  # Needs "death" animation
-	print("Player has died!")
