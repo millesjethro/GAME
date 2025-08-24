@@ -1,81 +1,79 @@
-[gd_scene load_steps=24 format=3 uid="uid://iyi18i7ofcq8"]
+[gd_scene load_steps=22 format=3 uid="uid://iyi18i7ofcq8"]
 
-[ext_resource type="Texture2D" uid="uid://bixvyighyj0qr" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Hurt.png" id="1_akrga"]
 [ext_resource type="Script" uid="uid://cg6h3hlc20rh7" path="res://scripts/enemies/Orcs/OrcWarrior.gd" id="1_w3uh7"]
-[ext_resource type="Texture2D" uid="uid://oh35eegur6s1" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Idle.png" id="2_oghyc"]
-[ext_resource type="Texture2D" uid="uid://biaeem4ndgywd" path="res://assets/enemies/Armored Orc/Armored Orc with shadows/Armored Orc-Death.png" id="2_sv116"]
+[ext_resource type="Texture2D" uid="uid://18umgefqumtu" path="res://assets/enemies/Armored Orc/Armored Orc/Armored Orc.png" id="2_crrnf"]
 [ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/healthbar.tscn" id="5_sv116"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3uh7"]
+atlas = ExtResource("2_crrnf")
+region = Rect2(0, 700, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sv116"]
+atlas = ExtResource("2_crrnf")
+region = Rect2(100, 700, 100, 100)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_vs6sd"]
-atlas = ExtResource("2_sv116")
-region = Rect2(0, 0, 100, 100)
+atlas = ExtResource("2_crrnf")
+region = Rect2(200, 700, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw7fi"]
-atlas = ExtResource("2_sv116")
-region = Rect2(100, 0, 100, 100)
+atlas = ExtResource("2_crrnf")
+region = Rect2(300, 700, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_spe1t"]
-atlas = ExtResource("2_sv116")
-region = Rect2(200, 0, 100, 100)
+atlas = ExtResource("2_crrnf")
+region = Rect2(0, 600, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr101"]
-atlas = ExtResource("2_sv116")
-region = Rect2(300, 0, 100, 100)
+atlas = ExtResource("2_crrnf")
+region = Rect2(100, 600, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fjw7a"]
-atlas = ExtResource("1_akrga")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ci4xl"]
+atlas = ExtResource("2_crrnf")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ryn3"]
+atlas = ExtResource("2_crrnf")
+region = Rect2(300, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx3yi"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3seto"]
-atlas = ExtResource("1_akrga")
+[sub_resource type="AtlasTexture" id="AtlasTexture_y78bf"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_71lxr"]
-atlas = ExtResource("1_akrga")
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1wxc"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q4d0a"]
-atlas = ExtResource("1_akrga")
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3o2e"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_68s6u"]
-atlas = ExtResource("2_oghyc")
-region = Rect2(0, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4sutp"]
-atlas = ExtResource("2_oghyc")
-region = Rect2(100, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqqeg"]
-atlas = ExtResource("2_oghyc")
-region = Rect2(200, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uiy30"]
-atlas = ExtResource("2_oghyc")
-region = Rect2(300, 0, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u0kxu"]
-atlas = ExtResource("2_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_aapy6"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ri8wv"]
-atlas = ExtResource("2_oghyc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hu8sc"]
+atlas = ExtResource("2_crrnf")
 region = Rect2(500, 0, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jkxvl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_w3uh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sv116")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vs6sd")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yw7fi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_spe1t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lr101")
 }],
 "loop": false,
 "name": &"die",
@@ -83,16 +81,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fjw7a")
+"texture": SubResource("AtlasTexture_spe1t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3seto")
+"texture": SubResource("AtlasTexture_lr101")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_71lxr")
+"texture": SubResource("AtlasTexture_ci4xl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q4d0a")
+"texture": SubResource("AtlasTexture_0ryn3")
 }],
 "loop": false,
 "name": &"hurt",
@@ -100,22 +98,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_68s6u")
+"texture": SubResource("AtlasTexture_mx3yi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4sutp")
+"texture": SubResource("AtlasTexture_y78bf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hqqeg")
+"texture": SubResource("AtlasTexture_j1wxc")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uiy30")
+"texture": SubResource("AtlasTexture_q3o2e")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u0kxu")
+"texture": SubResource("AtlasTexture_aapy6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ri8wv")
+"texture": SubResource("AtlasTexture_hu8sc")
 }],
 "loop": true,
 "name": &"idle",
@@ -139,7 +137,7 @@ script = ExtResource("1_w3uh7")
 [node name="Orc_AnimSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_jkxvl")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 speed_scale = 3.0
 flip_h = true
@@ -164,7 +162,7 @@ debug_color = Color(3.27289e-06, 0.643765, 0.293921, 0.42)
 
 [node name="HealthBar" parent="." instance=ExtResource("5_sv116")]
 offset_left = -13.0
-offset_top = -18.0
+offset_top = 9.0
 offset_right = 12.0
-offset_bottom = -14.0
+offset_bottom = 13.0
 metadata/_edit_use_anchors_ = true

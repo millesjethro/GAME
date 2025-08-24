@@ -44,7 +44,7 @@ func _physics_process(delta):
 		return
 
 	var input_direction = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-
+	
 	# Handle attacking timer
 	if is_attacking:
 		attack_timer -= delta

@@ -1,2 +1,61 @@
-loadout pricing
+Item Shop
 price = base_price * pow(1.2, level - 1)
+
+Equipment Adjustment
+stats per equipment level:
+	Base_Attack += (level * 1.7) + level
+	Base_Defense += (level * 1.7) + level
+	Base_Health += (level * 1.7) + level
+
+Weapons:
+	Unique Skill Features:
+		Wind (pierce up to 4 enemies) (evade chance)
+		Fire (pierce up to 5 enemies) (burn debuff)
+		Lightning (pierce up to 8 enemies) (paralyze debuff (unable to attack)) 
+		Ice (pierce up to 4 enemies) (first one can be frozen (unable to attack))
+		Pierce (pierce up to 4 enemies) (bleeding debuff)
+		Note:
+			Per pierce lowers the damage
+			"up to" means per pierce is by chance
+			Debuff will be applied per attack as an additional damage
+
+Armors:
+	Unique Features:
+		Same Armor Bonus Def (Set Bonus Def)
+		Stats Increase (All stats increase depending on level)
+		Per Kill Increase Def (On that stage only)
+		Same Armor Bonus Health (Set Bonus Hp)
+
+Accessories:
+	Unique Passive:
+		Lower Health Higher Damage (the lower the player hp the more damage bonus)
+		Lower Hp than Enemy More Damage (opposite too) (If the max hp of enemy is higher than the player)
+		Lower Health upscale Defense (the lower the hp the higher the def bonus)
+		5% Hp mobs insta-kill (killing all mobs that are less than 5% hp) (can be applied during pierce) 
+		Skill Chance Up
+
+Levels:
+	Unique:
+		all levels have different numbered set of floors (each run on that level)
+		all floors have a range of random leveled monsters
+	Floor Mechanic:
+		dash through all your enemy.
+		collect gold to buy items, upgrade, or echant.
+		chest at every floors that might help the player
+		boss can have wide area attacks (if not attack for a set of time)
+
+Enemy:
+	Monsters:
+		Drops:
+			gold and materials.
+			static enemy that is waiting to be attack.
+			attack the same time as player.
+	Boss:
+		Drops:
+			gold, materials, and unique equipment.
+			static enemy that attacks at a specific time if not attacked by player.
+			attack basic or wide area attack if attacked by player.
+			clearing the boss will reveal a hidden chest.
+
+
+		
