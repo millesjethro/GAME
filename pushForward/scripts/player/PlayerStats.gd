@@ -65,6 +65,7 @@ func _update_stats():
 	attack = base_attack + (level - 1) * 2
 	defense = base_defense + (level - 1) * 1
 	health = max_health
-	
+	emit_signal("after_health", max_health)
+
 func gold_update(goldAmount: int):
 	gold += goldAmount

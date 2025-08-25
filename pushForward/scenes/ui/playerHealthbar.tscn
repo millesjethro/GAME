@@ -27,7 +27,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poevd"]
-bg_color = Color(0.60933, 0.60933, 0.60933, 1)
+bg_color = Color(0.670689, 0.67069, 0.670689, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -46,6 +46,7 @@ offset_bottom = 39.0
 theme_override_styles/background = SubResource("StyleBoxFlat_sl04h")
 theme_override_styles/fill = SubResource("StyleBoxFlat_c0o3t")
 value = 40.0
+show_percentage = false
 script = ExtResource("1_sl04h")
 
 [node name="DamageBar" type="ProgressBar" parent="."]
@@ -57,10 +58,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_poevd")
-value = 30.0
+value = 50.0
 show_percentage = false
 
 [node name="damageTimer" type="Timer" parent="."]
 wait_time = 0.3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HEALTH : 1000/1000"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="damageTimer" to="." method="_on_timer_timeout"]

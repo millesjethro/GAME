@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cbo4lef8bfktr"]
+[gd_scene load_steps=8 format=4 uid="uid://cbo4lef8bfktr"]
 
 [ext_resource type="Texture2D" uid="uid://cnnx5ehii3rd0" path="res://icon.svg" id="1_so4yt"]
 [ext_resource type="PackedScene" uid="uid://bcx7kbk71lcys" path="res://scenes/player/player_scene.tscn" id="2_e60ur"]
@@ -7,6 +7,13 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e60ur"]
 size = Vector2(166, 20)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_m1a3y"]
+scenes/1/scene = ExtResource("4_m1a3y")
+scenes/2/scene = ExtResource("4_13g0o")
+
+[sub_resource type="TileSet" id="TileSet_13g0o"]
+sources/0 = SubResource("TileSetScenesCollectionSource_m1a3y")
 
 [node name="Test_Level" type="Node2D"]
 
@@ -25,8 +32,6 @@ shape = SubResource("RectangleShape2D_e60ur")
 [node name="player_body" parent="." instance=ExtResource("2_e60ur")]
 position = Vector2(52, 586)
 
-[node name="elite_orc_warrior" parent="." instance=ExtResource("4_m1a3y")]
-position = Vector2(375, 620)
-
-[node name="orc_warrior" parent="." instance=ExtResource("4_13g0o")]
-position = Vector2(329, 620)
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHACYAAAAAAAAAAgAJACYAAAAAAAAAAgALACYAAAAAAAAAAgANACYAAAAAAAAAAgAPACYAAAAAAAAAAgARACYAAAAAAAAAAgATACYAAAAAAAAAAgAVACYAAAAAAAAAAgAXACYAAAAAAAAAAQA=")
+tile_set = SubResource("TileSet_13g0o")

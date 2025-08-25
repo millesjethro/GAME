@@ -31,6 +31,7 @@ var is_dead: bool = false
 func _ready():
 	stats.connect("died", Callable(self, "_on_player_died"))
 	stats.connect("health_changed", Callable(self, "_on_health_changed"))
+	stats.connect("after_health", Callable(self, "_on_after_changed"))
 	playerHp.init_health(stats.base_health)
 
 func _physics_process(delta):
@@ -132,6 +133,9 @@ func _on_attack_entered(area: Area2D) -> void:
 # ------------------------------
 # Callbacks
 # ------------------------------
+func _on_after_changed(after_health: int) -> void:
+	playerHp.set_health(after_health)
+
 func _on_health_changed(new_health: int) -> void:
 	playerHp.set_health(new_health)
 	
