@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://25fyol2u2yfk" path="res://scripts/player/PlayerControl.gd" id="1_vltva"]
 [ext_resource type="Texture2D" uid="uid://fbrpv3s52jxc" path="res://assets/player/Lancer/Lancer/Lancer.png" id="2_5aw2d"]
 [ext_resource type="Script" uid="uid://baxcuvv8h10tw" path="res://scripts/player/PlayerStats.gd" id="3_jqc4g"]
-[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/healthbar.tscn" id="4_5aw2d"]
+[ext_resource type="PackedScene" uid="uid://ds85o31ek5a67" path="res://scenes/ui/playerHealthbar.tscn" id="4_5aw2d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_07xs6"]
 atlas = ExtResource("2_5aw2d")
@@ -450,23 +450,11 @@ debug_color = Color(0.807987, 0, 0.0191098, 0.42)
 script = ExtResource("3_jqc4g")
 
 [node name="Player_pov" type="Camera2D" parent="."]
-offset = Vector2(0, -40)
 zoom = Vector2(3, 3)
-limit_left = 0
-limit_right = 1150
-limit_bottom = 80
 
-[node name="HealthBar" parent="." instance=ExtResource("4_5aw2d")]
-custom_minimum_size = Vector2(50, 0)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -24.0
-offset_top = -39.0
-offset_right = 26.0
-offset_bottom = -33.0
-grow_vertical = 1
-size_flags_horizontal = 4
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerHealthbar" parent="CanvasLayer" instance=ExtResource("4_5aw2d")]
 
 [connection signal="area_entered" from="Lancer_TakePosition" to="." method="_on_engage_in_battle"]
 [connection signal="area_exited" from="Lancer_TakePosition" to="." method="_on_out_of_battle"]

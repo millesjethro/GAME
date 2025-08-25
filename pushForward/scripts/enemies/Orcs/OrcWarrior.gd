@@ -22,7 +22,7 @@ func _ready():
 	apply_level_stats(level)
 	health = max_health
 	hp_bar.init_health(health)
-
+	
 func apply_level_stats(lv: int) -> void:
 	# Scaling formulas (you can tweak multipliers for balance)
 	max_health = base_health + (lv - 1) * 10   # +10 HP per level

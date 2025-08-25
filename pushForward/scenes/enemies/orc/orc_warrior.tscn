@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cg6h3hlc20rh7" path="res://scripts/enemies/Orcs/OrcWarrior.gd" id="1_w3uh7"]
 [ext_resource type="Texture2D" uid="uid://18umgefqumtu" path="res://assets/enemies/Armored Orc/Armored Orc/Armored Orc.png" id="2_crrnf"]
-[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/healthbar.tscn" id="5_sv116"]
+[ext_resource type="PackedScene" uid="uid://d0t62haf2np2b" path="res://scenes/ui/enemyHealthbar.tscn" id="5_sv116"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3uh7"]
 atlas = ExtResource("2_crrnf")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0t62haf2np2b"]
 
-[ext_resource type="Script" uid="uid://bw2ehwpf5vfrh" path="res://scripts/ui/player/player_healthbar.gd" id="1_6js0b"]
+[ext_resource type="Script" uid="uid://bw2ehwpf5vfrh" path="res://scripts/ui/player/enemyHealthbar.gd" id="1_61x02"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrfot"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -47,7 +47,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_mrfot")
 theme_override_styles/fill = SubResource("StyleBoxFlat_3u2wq")
 value = 20.0
 show_percentage = false
-script = ExtResource("1_6js0b")
+script = ExtResource("1_61x02")
 
 [node name="DamageBar" type="ProgressBar" parent="."]
 z_index = -1

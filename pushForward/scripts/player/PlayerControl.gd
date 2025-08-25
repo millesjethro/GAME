@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 @onready var anim_sprite = $Lancer_AnimSprite
 @onready var stats: PlayerStats = $PlayerStatus
-@onready var hp_bar = $HealthBar
+@onready var playerHp: ProgressBar = $CanvasLayer/PlayerHealthbar
 @export var gravity: float = 600.0
 
 var has_dealt_damage: bool = false
@@ -31,8 +31,7 @@ var is_dead: bool = false
 func _ready():
 	stats.connect("died", Callable(self, "_on_player_died"))
 	stats.connect("health_changed", Callable(self, "_on_health_changed"))
-	hp_bar.init_health(stats.base_health)
-	
+	playerHp.init_health(stats.base_health)
 
 func _physics_process(delta):
 	if is_dead:
@@ -134,7 +133,7 @@ func _on_attack_entered(area: Area2D) -> void:
 # Callbacks
 # ------------------------------
 func _on_health_changed(new_health: int) -> void:
-	hp_bar.set_health(new_health)
+	playerHp.set_health(new_health)
 	
 func _on_enemy_died(xp_reward: int, gold_reward: int) -> void:
 	stats.gain_exp(xp_reward)

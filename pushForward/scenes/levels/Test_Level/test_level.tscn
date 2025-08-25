@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbo4lef8bfktr"]
+[gd_scene load_steps=6 format=3 uid="uid://cbo4lef8bfktr"]
 
 [ext_resource type="Texture2D" uid="uid://cnnx5ehii3rd0" path="res://icon.svg" id="1_so4yt"]
 [ext_resource type="PackedScene" uid="uid://bcx7kbk71lcys" path="res://scenes/player/player_scene.tscn" id="2_e60ur"]
+[ext_resource type="PackedScene" uid="uid://iyi18i7ofcq8" path="res://scenes/enemies/orc/orc_warrior.tscn" id="4_13g0o"]
 [ext_resource type="PackedScene" uid="uid://c1pnryr2mhiu1" path="res://scenes/enemies/orc/elite_orc_warrior.tscn" id="4_m1a3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e60ur"]
@@ -10,7 +11,7 @@ size = Vector2(166, 20)
 [node name="Test_Level" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(198, -12)
+position = Vector2(199, 637)
 scale = Vector2(2.37943, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -22,7 +23,10 @@ texture = ExtResource("1_so4yt")
 shape = SubResource("RectangleShape2D_e60ur")
 
 [node name="player_body" parent="." instance=ExtResource("2_e60ur")]
-position = Vector2(51, -63)
+position = Vector2(52, 586)
 
 [node name="elite_orc_warrior" parent="." instance=ExtResource("4_m1a3y")]
-position = Vector2(374, -29)
+position = Vector2(375, 620)
+
+[node name="orc_warrior" parent="." instance=ExtResource("4_13g0o")]
+position = Vector2(329, 620)

@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds85o31ek5a67"]
+
+[ext_resource type="Script" uid="uid://c7pk8alykvtrg" path="res://scripts/ui/player/playerHealthbar.gd" id="1_sl04h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl04h"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0o3t"]
+bg_color = Color(1, 0.0405034, 0.0223529, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poevd"]
+bg_color = Color(0.60933, 0.60933, 0.60933, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="PlayerHealthbar" type="ProgressBar"]
+offset_left = 13.0
+offset_top = 12.0
+offset_right = 396.0
+offset_bottom = 39.0
+theme_override_styles/background = SubResource("StyleBoxFlat_sl04h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c0o3t")
+value = 40.0
+script = ExtResource("1_sl04h")
+
+[node name="DamageBar" type="ProgressBar" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_poevd")
+value = 30.0
+show_percentage = false
+
+[node name="damageTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[connection signal="timeout" from="damageTimer" to="." method="_on_timer_timeout"]
